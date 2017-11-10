@@ -23,5 +23,4 @@ Dans le plan horizontal, la librairie `moment` m'aide à calculer l'équivalent 
 
 ## Peut être amélioré
 ### La gestion de l'overflow dans les titres
-Actuellement les longs titres vont sortir de la box. On pourrait imaginer une solution dans laquelle les titres trop longs sont réduits, ou qu'il.
-- Le positionnement  
+Actuellement les longs titres vont sortir de la box. Seul `:hover` fait apparaitre toute la box.
