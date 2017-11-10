@@ -1,4 +1,13 @@
 
+## Setup
+
+```
+npm start
+```
+
+## Démo
+
+Une démonstration est disponible ici : https://licarth.github.io/react-timeline/
 
 ## Démarche Algorithmique
 J'ai commencé par réfléchir au problème. Si on désigne par `h` le nombre de lignes minimum qu'il faut pour représenter les études, le cas h=2 est assez simple. Cela tend à se compliquer un peu pour h > 2.

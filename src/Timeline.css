@@ -29,21 +29,28 @@
     line-height: normal;
   }
   
+  .timebox .title {
+    display: inline-block;
+    margin: 10px;
+    font-weight: bold;
+  }
+
   .timebox {
     z-index: 10;
-    color: white;
+    color: rgb(0, 0, 0);
     position: relative;
     font-weight: bold;
     font-size: smaller;
     overflow: hidden;
-    border-color: white;
-    background: repeating-linear-gradient( 45deg, #606dbc, #606dbc 10px, #465298 10px, #465298 20px);
+    border: solid;
+    border-color: rgb(133, 133, 133);
+    background: repeating-linear-gradient( 45deg, #ffffff, #ffffff 5px, #f8f8f8 5px, #f8f8f8 10px);
   }
 
-  .timebox:hover {
+  /* .timebox:hover {
     overflow:visible;
     z-index: 11;
-  }
+  } */
 
  hr {
     position: relative;
@@ -58,7 +65,7 @@
 
 .timeline .label .vertical-line {
   display: inline-block;
-  height: 16px;
+  height: 20px;
   border-left: solid #000000;
 }
 

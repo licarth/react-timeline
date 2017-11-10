@@ -3,6 +3,8 @@ import _ from 'lodash';
 import moment from 'moment';
 import './Timeline.css';
 
+const refMonth = moment('20000101');
+
 class TimeBoxes extends React.Component {
   render() {
     const timeboxes = [];
@@ -18,7 +20,7 @@ class TimeBoxes extends React.Component {
               title={event.title}
               height={h + 1}
               totalHeight={g.lines.length}
-              percentsPerMonth={this.props.percentsPerMonth}
+              monthsToPercent={this.props.monthsToPercent}
             />
           )
         }
@@ -30,13 +32,12 @@ class TimeBoxes extends React.Component {
 
 class BottomLine extends React.Component {
   render() {
-    const refMonth = moment('20000101');
     const minYear = refMonth.clone().add(this.props.minT, 'months').year()
     const maxYear = refMonth.clone().add(this.props.maxT, 'months').year() + 1
 
     const labels = _.range(minYear, maxYear).map(y => {
       const labelStyle = {
-        left: `${moment(`${y}0101`).diff(refMonth.clone().add(this.props.minT, 'months'), 'months') * this.props.percentsPerMonth}%`
+        left: `${this.props.monthsToPercent(moment(`${y}0101`).diff(refMonth.clone().add(this.props.minT, 'months'), 'months'))}%`
       }
       const labelTextStyle = [];
       if (y % 5 !== 0) {
@@ -58,8 +59,8 @@ class TimeBox extends React.Component {
       gridTemplateRows: `repeat(${this.props.totalHeight}, 1fr)`
     }
     const timeboxStyle = {
-      width: `${(this.props.end - this.props.start) * this.props.percentsPerMonth}%`,
-      left: `${(this.props.start - this.props.minT) * this.props.percentsPerMonth}%`,
+      width: `${this.props.monthsToPercent(this.props.end - this.props.start)}%`,
+      left: `${this.props.monthsToPercent(this.props.start - this.props.minT)}%`,
       gridRow: this.props.height
     }
     return <div className="grid" style={gridStyle}>
@@ -71,15 +72,25 @@ class TimeBox extends React.Component {
 }
 
 class Timeline extends React.Component {
+
   render() {
     if (_.isEmpty(this.props.events)) {
       return <div className="timeline" />
     }
     const events = _.sortBy(this.props.events, 'start');
-    
+     
     const groups = [];
-    const minT = _.first(events).start;
+
+    // minT and maxT are the beginning and end, in months, of
+    // of what will be visible
+
+    //minT is Jan1st preceeding the first event
+    const minMoment = refMonth.clone().add(_.first(events).start, 'months').startOf('year');
+    //same as minMoment but in months
+    const minT = minMoment.diff(refMonth, 'months');
+    
     var maxT = _.first(events).end;
+
     var currentGroup = { lines: [], end: undefined };
     
     for (var e of events) {
@@ -108,12 +119,18 @@ class Timeline extends React.Component {
       }
     }
     groups.push(currentGroup);
+
+    //minT is Jan1st preceeding the first event
+    const maxMoment = refMonth.clone().add(maxT, 'months').add(1, 'year').startOf('year');
+    maxT = maxMoment.diff(refMonth, 'months');
     
-    const percentsPerMonth = 100 / (maxT - minT);
+    const monthsToPercent = (m) => {
+      return 100 / (maxT - minT) * m;
+    }
 
     return <div className="timeline">
-      <TimeBoxes percentsPerMonth={percentsPerMonth} events={events} groups={groups} minT={minT} />
-      <BottomLine percentsPerMonth={percentsPerMonth} minT={minT} maxT={maxT} />
+      <TimeBoxes monthsToPercent={monthsToPercent} events={events} groups={groups} minT={minT} />
+      <BottomLine monthsToPercent={monthsToPercent} minT={minT} maxT={maxT} />
     </div>;
   }
 }
