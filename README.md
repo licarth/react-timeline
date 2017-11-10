@@ -8,6 +8,12 @@ npm install
 npm start
 ```
 
+En option, lancer les tests :
+
+```
+npm run test
+```
+
 ### To deploy to github pages 
 
 ```

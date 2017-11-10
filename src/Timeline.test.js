@@ -7,10 +7,10 @@ it('renders without crashing when no events', () => {
   ReactDOM.render(<Timeline />, div);
 });
 
-it('renders without crashing when no events', () => {
+it('renders without crashing when one event', () => {
   const div = document.createElement('div');
   const events = [{ start: 5, end: 70, title: 'Study of Bendamustine' }]
   ReactDOM.render(<Timeline events={events}/>, div);
 
-  //Assertions here.
+  //More assertions here about how many elements are placed.
 });
