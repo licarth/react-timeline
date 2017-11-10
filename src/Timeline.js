@@ -23,10 +23,10 @@ const TimeBox = (props) => {
 
 const TimeBoxes = (props) => {
   const timeboxes = [];
-  for (var g of props.groups) {
-    for (var h = 0; h < g.lines.length; h++) {
-      var line = g.lines[h];
-      for (var event of line) {
+  for (let g of props.groups) {
+    for (let h = 0; h < g.lines.length; h++) {
+      let line = g.lines[h];
+      for (let event of line) {
         timeboxes.push(
           <TimeBox
             minT={props.minT}
@@ -81,13 +81,13 @@ const Timeline = (props) => {
   //same as minMoment but in months
   const minT = minMoment.diff(refMonth, 'months');
 
-  var maxT = _.first(events).end;
+  let maxT = _.first(events).end;
 
-  var currentGroup = { lines: [], end: undefined };
+  let currentGroup = { lines: [], end: undefined };
 
-  for (var e of events) {
-    var placed = false;
-    var h = 0;
+  for (let e of events) {
+    let placed = false;
+    let h = 0;
     maxT = Math.max(maxT, e.end);
     while (!placed && h < 100) {
       if (!_.last(currentGroup.lines[h])) {
@@ -126,4 +126,6 @@ const Timeline = (props) => {
   </div>;
 };
 
-export default Timeline;
+const renderCliniqualTrials = (events) => <Timeline events={events} />;
+
+export {Timeline, renderCliniqualTrials};

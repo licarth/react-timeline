@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './markdown.css';
-import Timeline from './Timeline.js'
+import {Timeline, renderCliniqualTrials} from './Timeline.js'
 import ReactMarkdown from 'react-markdown';
 
 class App extends Component {
@@ -22,14 +22,24 @@ class App extends Component {
   { start: 90, end: 115, title: 'Bortezomib' },
 ]} />
 \`\`\`
+or 
+\`\`\`jsx
+{renderCliniqualTrials([
+  { start: 5, end: 50, title: 'Study of Bendamustine' },
+  { start: 55, end: 85, title: 'ASCT With Nivolumab' },
+  { start: 70, end: 100, title: 'Study of Stockolm' },
+  { start: 90, end: 115, title: 'Bortezomib' },
+])}
+\`\`\`
+
 `
         } />
-        <Timeline events={[
+        {renderCliniqualTrials([
           { start: 5, end: 50, title: 'Study of Bendamustine' },
           { start: 55, end: 85, title: 'ASCT With Nivolumab' },
           { start: 70, end: 100, title: 'Study of Stockolm' },
           { start: 90, end: 115, title: 'Bortezomib' },
-        ]} />
+        ])}
         <ReactMarkdown source={
           `
 ### Années entre 2000 et 2005
