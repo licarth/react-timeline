@@ -73,7 +73,7 @@ class App extends Component {
 <ReactMarkdown source={
           `
 > On pourrait trouver une alternative pour mieux gérer l'overflow.
-> Passer la souris donne le nom de l'étude.
+> Comme par exemple afficher un tooltip au passage de la souris.
           `
         } />
 

@@ -65,7 +65,7 @@ class TimeBox extends React.Component {
     }
     return <div className="grid" style={gridStyle}>
       <div className="timebox" style={timeboxStyle}>
-        <span className="title">{this.props.title}</span>
+        <span className="title" alt={this.props.title}>{this.props.title}</span>
       </div>
     </div>;
   }
