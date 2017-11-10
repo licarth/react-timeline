@@ -1,6 +1,13 @@
+  
+  hr,p,span {
+    all: unset;
+  }
+  
   .timeline {
     height: 350px;
     margin: 0px 100px 0px 100px;
+    all: unset;
+    font: unset;
   }
 
   .grid {
@@ -53,6 +60,7 @@
   } */
 
  hr {
+    all: unset;
     position: relative;
     display: block;
     height: 0px;

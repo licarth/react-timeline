@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './markdown.css';
 import Timeline from './Timeline.js'
 import ReactMarkdown from 'react-markdown';
 
@@ -9,8 +10,16 @@ class App extends Component {
       <div className="App">
         <ReactMarkdown source={
           `
-# Démo de la frise 
+# Frise d'études thérapeutiques
 
+\`\`\`
+<Timeline events={[
+  { start: 5, end: 50, title: 'Study of Bendamustine' },
+  { start: 55, end: 85, title: 'ASCT With Nivolumab' },
+  { start: 70, end: 100, title: 'Study of Stockolm' },
+  { start: 90, end: 115, title: 'Bortezomib' },
+]} />
+\`\`\`
 ### Exemple donné en énoncé
 `
         } />
@@ -94,6 +103,19 @@ class App extends Component {
           { start: 0, end: 70, title: 'Study 1' },
           { start: 0, end: 70, title: 'Study 1' },
         ]} />
+
+
+<ReactMarkdown source={
+          `
+> Deux événements très éloignés dans le temps pourraient aussi être problématiques.
+          `
+        } />
+
+        <Timeline events={[
+          { start: 0, end: 1, title: 'Study 1' },
+          { start: 102, end: 103, title: 'Study 1' },
+        ]} />
+
 
 
       </div>
