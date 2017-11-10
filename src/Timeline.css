@@ -54,10 +54,10 @@
     background: repeating-linear-gradient( 45deg, #ffffff, #ffffff 5px, #f8f8f8 5px, #f8f8f8 10px);
   }
 
-  /* .timebox:hover {
+  .timebox:hover {
     overflow:visible;
     z-index: 11;
-  } */
+  }
 
  hr {
     position: relative;
