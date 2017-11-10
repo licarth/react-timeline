@@ -60,7 +60,6 @@
   } */
 
  hr {
-    all: unset;
     position: relative;
     display: block;
     height: 0px;
