@@ -1,0 +1,21 @@
+{
+  "name": "inato-react",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "moment": "^2.19.1",
+    "momentjs": "^2.0.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-markdown": "^2.5.0",
+    "react-scripts": "1.0.17"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "homepage" : "http://licarth.github.io/react-timeline"
+}
